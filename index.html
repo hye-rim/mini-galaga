@@ -72,7 +72,8 @@ const N = { C5: 523, D5: 587, E5: 659, F5: 698, G5: 784, A5: 880, B5: 988, C6: 1
 
 // ───────── 상태 ─────────
 let state = 'title';      // title | play | over
-let G, player, bullets, ebullets, enemies, rescues, particles, pops;
+let G, player;
+let bullets = [], ebullets = [], enemies = [], rescues = [], particles = [], pops = [];
 let hi = 0, overT = 0;
 try { hi = +localStorage.getItem('galagaHi') || 0; } catch (_) {}
 
