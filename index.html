@@ -369,14 +369,14 @@ function updatePlayer(dt) {
     }
     return;
   }
-  const sp = 400, m = P.dual ? 34 : 16;
+  const sp = 560, m = P.dual ? 34 : 16;
   const L = keys.ArrowLeft || keys.KeyA || tapped.ArrowLeft || tapped.KeyA;
   const R = keys.ArrowRight || keys.KeyD || tapped.ArrowRight || tapped.KeyD;
   const F = keys.Space || tapped.Space;
   for (const k in tapped) delete tapped[k];
   if (L) P.x -= sp * dt;
   if (R) P.x += sp * dt;
-  if (touchX !== null) P.x += clamp(touchX - P.x, -sp * dt, sp * dt);
+  if (touchX !== null) P.x = touchX; // 드래그는 손가락 위치를 즉시 따라감
   P.x = clamp(P.x, m, W - m);
   P.inv = Math.max(0, P.inv - dt);
   P.cd = (P.cd || 0) - dt;
