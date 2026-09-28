@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Galaga</title>
 <style>
+  /* 아이폰 사파리는 -webkit- 접두사를 붙여야 알아듣는다: 버튼을 누르다 글자가 파랗게 선택(블록)되거나
+     길게 눌러 복사 메뉴가 뜨지 않게. 입력칸은 그대로 선택·붙여넣기 되게 둔다 */
+  *, *::before, *::after { -webkit-user-select:none; user-select:none; -webkit-touch-callout:none; }
+  input, textarea, [contenteditable] { -webkit-user-select:text; user-select:text; -webkit-touch-callout:default; }
+
   html, body { margin: 0; height: 100%; background: #000; color: #fff; font-family: monospace; }
   body { display: flex; align-items: center; justify-content: center; }
   canvas { background: #000; max-height: 100vh; max-width: 100vw; border: 1px solid #223; }
