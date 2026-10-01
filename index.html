@@ -62,7 +62,7 @@ function touch(e) {
   if (e.type === 'touchstart' && (state === 'title' || (state === 'over' && overT > 1.5))) start();
   e.preventDefault();
 }
-['touchstart', 'touchmove', 'touchend'].forEach(t => cv.addEventListener(t, touch, { passive: false }));
+['touchstart', 'touchmove', 'touchend', 'touchcancel'].forEach(t => cv.addEventListener(t, touch, { passive: false }));
 
 // ───────── 사운드 ─────────
 let AC = null;
