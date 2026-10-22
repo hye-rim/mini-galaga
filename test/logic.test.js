@@ -18,7 +18,7 @@ const DT = 1 / 60;
 const run = (st, sec, input = {}) => { for (let t = 0; t < sec && st.state === 'play'; t += DT) L.update(st, DT, input); };
 const enemy = (over) => ({ type: 0, row: 3, col: 1, state: 'form', hp: 1, x: 100, y: 200, ang: Math.PI / 2, carry: false, ...over });
 
-test('a normal stage has 4 bosses, 16 butterflies and 20 bees; challenge stages are 3, 7, 11 …', () => {
+test('a normal stage has 4 bosses, 16 butterflies and 20 bees; challenge stages are 3, 7, 11 ...', () => {
   const st = L.newGame(rng(1));
   const count = (t) => st.enemies.filter((e) => e.type === t).length;
   assert.deepStrictEqual([count(2), count(1), count(0)], [4, 16, 20]);
