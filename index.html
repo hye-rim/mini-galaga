@@ -19,6 +19,8 @@
 <canvas id="c" width="480" height="640"></canvas>
 <script src="logic.js"></script>
 <script>
+// 오락실 튜토리얼이 '진짜로 일어난 일'을 알아채는 신호 (arcade/public/tutorial.js 가 듣는다. 튜토리얼이 아니면 아무도 안 듣는다)
+const tutorialSignal = (type) => window.dispatchEvent(new CustomEvent('arcade:tutorial', { detail: { type } }));
 // 규칙(편대·급강하·광선·구출·점수·스테이지)은 logic.js 의 LOGIC_GALAGA. 여기서는 그리기·소리·입력만
 const L = LOGIC_GALAGA;
 const cv = document.getElementById('c');
@@ -129,6 +131,7 @@ function gameOver() {
 // 규칙이 남긴 일들 → 소리·폭발·점수 글씨
 function handleEvents() {
   for (const e of G.events.splice(0)) {
+    tutorialSignal(e.type);
     switch (e.type) {
       case 'start': jingle([[N.G4,.12],[N.C5,.12],[N.E5,.12],[N.G5,.12],[N.E5,.12],[N.G5,.12],[N.C6,.3],[0,.05],[N.G5,.12],[N.A5,.12],[N.B5,.12],[N.C6,.4]]); break;
       case 'stage': jingle(e.challenge ? [[N.E5,.1],[N.G5,.1],[N.C6,.1],[N.E6,.25]] : [[N.C5,.1],[N.E5,.1],[N.G5,.1],[N.C6,.25]]); break;
